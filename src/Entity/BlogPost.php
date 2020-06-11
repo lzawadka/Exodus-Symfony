@@ -81,6 +81,11 @@ class BlogPost implements AuthoredEntityInterface, PublishedDateEntityInterface
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $likes = [];
+
     public function __construct()
     {
       $this->comments = new ArrayCollection();
@@ -164,5 +169,17 @@ class BlogPost implements AuthoredEntityInterface, PublishedDateEntityInterface
       $this->author = $author;
 
       return $this;
+    }
+
+    public function getLikes(): ?array
+    {
+        return $this->likes;
+    }
+
+    public function setLikes(array $likes): self
+    {
+        $this->likes = $likes;
+
+        return $this;
     }
 }

@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bae5b692-3a20-49c5-9d24-101a1e299828" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Symfony-Exodus.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Symfony-Exodus.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/BlogPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/BlogPost.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -152,6 +159,9 @@
       <path value="$PROJECT_DIR$/vendor/api-platform/core" />
       <path value="$PROJECT_DIR$/vendor/nelmio/cors-bundle" />
       <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/lexik/jwt-authentication-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1d5AYPngvzfmNHlOZgqjeLLwvdk" />
@@ -165,6 +175,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/config/routes" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -187,11 +202,6 @@
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
               <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@fb0371f0" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@fb0371f0" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@2f346b3c" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
           </expand>
           <select />
         </treeState>
@@ -209,7 +219,7 @@
       <option name="presentableId" value="Default" />
       <updated>1591704626875</updated>
       <workItem from="1591704630698" duration="307000" />
-      <workItem from="1591707052067" duration="21437000" />
+      <workItem from="1591707052067" duration="25358000" />
     </task>
     <servers />
   </component>

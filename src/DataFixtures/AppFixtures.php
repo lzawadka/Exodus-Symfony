@@ -22,6 +22,33 @@ class AppFixtures extends Fixture
    */
   private $faker;
 
+  private const USERS = [
+    [
+      'username' => 'Louis',
+      'email' => 'louis.7810@hotmail.fr',
+      'name' => 'Zawadka',
+      'password' => 'Louis123'
+    ],
+    [
+      'username' => 'Louis1',
+      'email' => 'louis.7810000@hotmail.fr',
+      'name' => 'Zawadka',
+      'password' => 'Louis123'
+    ],
+    [
+      'username' => 'Louis2',
+      'email' => 'louis.781000@hotmail.fr',
+      'name' => 'Zawadka',
+      'password' => 'Louis123'
+    ],
+    [
+      'username' => 'Louis3',
+      'email' => 'louis.78100@hotmail.fr',
+      'name' => 'Zawadka',
+      'password' => 'Louis123'
+    ],
+  ];
+
   public function __construct(UserPasswordEncoderInterface $passwordEncoder)
   {
     $this->passwordEncoder = $passwordEncoder;
@@ -44,7 +71,10 @@ class AppFixtures extends Fixture
       $blogPost->setTitle($this->faker->realText(10));
       $blogPost->setPublished($this->faker->dateTimeThisYear);
       $blogPost->setContent($this->faker->sentence(10));
-      $blogPost->setAuthor($user);
+
+      $authorReference = $this->getReference($this->getRandomUserReference());
+
+      $blogPost->setAuthor($authorReference);
       $blogPost->setSlug($this->faker->slug);
 
       $this->addReference("blog_post_$i", $blogPost);
@@ -62,7 +92,10 @@ class AppFixtures extends Fixture
         $comment = new Comment();
         $comment->setPublished($this->faker->dateTimeThisYear);
         $comment->setContent($this->faker->sentence(10));
-        $comment->setAuthor($this->getReference('user'));
+
+        $authorReference = $this->getReference($this->getRandomUserReference());
+
+        $comment->setAuthor($authorReference);
         $comment->setBlogPost($this->getReference("blog_post_$i"));
 
         $manager->persist($comment);
@@ -73,19 +106,27 @@ class AppFixtures extends Fixture
 
   public function loadUsers(ObjectManager $manager)
   {
-    $user = new User();
-    $user->setName('Louis');
-    $user->setEmail('Louis.78100@hotmail.fr');
-    $user->setUsername('Louis');
-    $user->setPassword($this->passwordEncoder->encodePassword(
-      $user,
-      'louis123'
-    ));
+    foreach(self::USERS as $userFixture) {
+      $user = new User();
+      $user->setName($userFixture['name']);
+      $user->setEmail($userFixture['email']);
+      $user->setUsername($userFixture['username']);
 
-    $this->addReference('user', $user);
+      $user->setPassword($this->passwordEncoder->encodePassword(
+        $user,
+        $userFixture['password']
+      ));
 
-    $manager->persist($user);
+      $this->addReference('user_' . $userFixture['username'], $user);
+
+      $manager->persist($user);
+    }
+
     $manager->flush();
+  }
 
+  protected function getRandomUserReference(): User
+  {
+    return $this->getReference('user_'.self::USERS[rand(0,3)]['username']);
   }
 }

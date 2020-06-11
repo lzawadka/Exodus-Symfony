@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\BlogPostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -76,18 +77,18 @@ class BlogPost implements AuthoredEntityInterface, PublishedDateEntityInterface
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="blogPost")
-     * @ORM\JoinColumn(nullable=false)
+     * @ApiSubresource()
      */
-    private $blogPost;
+    private $comments;
 
     public function __construct()
     {
       $this->comments = new ArrayCollection();
     }
 
-    public function getBlogPost(): Collection
+    public function getComments(): Collection
     {
-      return $this->blogPost;
+      return $this->comments;
     }
 
     public function getId(): ?int

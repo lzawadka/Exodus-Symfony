@@ -82,10 +82,11 @@ class BlogPost implements AuthoredEntityInterface, PublishedDateEntityInterface
     private $comments;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\OneToMany(targetEntity="App\Entity\Likes", mappedBy="likes")
      * @ApiSubresource()
      */
-    private $likes = [];
+    private $likes;
+
 
     public function __construct()
     {
@@ -170,17 +171,5 @@ class BlogPost implements AuthoredEntityInterface, PublishedDateEntityInterface
       $this->author = $author;
 
       return $this;
-    }
-
-    public function getLikes(): ?array
-    {
-        return $this->likes;
-    }
-
-    public function setLikes(array $likes): self
-    {
-        $this->likes = $likes;
-
-        return $this;
     }
 }

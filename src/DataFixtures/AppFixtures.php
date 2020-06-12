@@ -106,10 +106,9 @@ class AppFixtures extends Fixture
 
   public function loadUsers(ObjectManager $manager)
   {
-    foreach(self::USERS as $userFixture) {
       $user = new User();
-      $user->setName($userFixture['name']);
-      $user->setEmail($userFixture['email']);
+      $user->setName('Louis');
+      $user->setEmail('');
       $user->setUsername($userFixture['username']);
 
       $user->setPassword($this->passwordEncoder->encodePassword(
@@ -120,7 +119,6 @@ class AppFixtures extends Fixture
       $this->addReference('user_' . $userFixture['username'], $user);
 
       $manager->persist($user);
-    }
 
     $manager->flush();
   }

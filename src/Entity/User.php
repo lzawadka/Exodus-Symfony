@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -103,6 +104,12 @@ class User implements UserInterface
    * @Groups({"get"})
    */
   private $comments;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Likes", inversedBy="likes")
+     * @ApiSubresource()
+     */
+    private $likes;
 
   public function __construct()
   {

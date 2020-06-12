@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-class AuthoredEntitySubsriber implements EventSubscriberInterface
+class AuthoredEntitySubscriber implements EventSubscriberInterface
 {
   /**
    * @var TokenStorageInterface

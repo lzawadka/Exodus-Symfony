@@ -83,6 +83,7 @@ class BlogPost implements AuthoredEntityInterface, PublishedDateEntityInterface
 
     /**
      * @ORM\Column(type="array")
+     * @ApiSubresource()
      */
     private $likes = [];
 

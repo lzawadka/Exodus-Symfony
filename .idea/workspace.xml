@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bae5b692-3a20-49c5-9d24-101a1e299828" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Symfony-Exodus.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Symfony-Exodus.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/BlogPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/BlogPost.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200609135345.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200609151147.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200610083325.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200610143437.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,6 +197,7 @@
       <workItem from="1591704630698" duration="307000" />
       <workItem from="1591707052067" duration="34246000" />
       <workItem from="1591881125915" duration="1705000" />
+      <workItem from="1591955158822" duration="2187000" />
     </task>
     <servers />
   </component>
@@ -210,5 +215,11 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2088" y="93" key="NewPhpClassDialog" timestamp="1591887181612">
+      <screen x="1440" y="-180" width="1920" height="1080" />
+    </state>
+    <state x="2088" y="93" key="NewPhpClassDialog/0.0.1440.900/1440.-180.1920.1080@1440.-180.1920.1080" timestamp="1591887181612" />
   </component>
 </project>

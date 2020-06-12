@@ -1,0 +1,5 @@
+monolog:
+    # ...
+    handlers:
+        nested:
+            type: error_log

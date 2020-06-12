@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bae5b692-3a20-49c5-9d24-101a1e299828" name="Default Changelist" comment="" />
+    <list default="true" id="bae5b692-3a20-49c5-9d24-101a1e299828" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/config/parameters.yaml.dist" beforeDir="false" afterPath="$PROJECT_DIR$/config/fortrabbit.yaml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

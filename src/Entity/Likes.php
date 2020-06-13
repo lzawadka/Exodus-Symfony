@@ -28,19 +28,19 @@ class Likes
     private $likes = [];
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\BlogPost", inversedBy="likes")
-     * @Groups({"get"})
+     * @ORM\OneToMany(targetEntity="App\Entity\BlogPost", mappedBy="likes")
      */
     private $post;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="likes")
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="likes")
      */
     private $author;
 
     public function __construct()
     {
         $this->author = new ArrayCollection();
+        $this->post = new ArrayCollection();
     }
 
     /**
@@ -54,7 +54,7 @@ class Likes
     /**
      * @return mixed
      */
-    public function getPost()
+    public function getPost(): Collection
     {
         return $this->post;
     }

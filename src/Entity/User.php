@@ -105,16 +105,21 @@ class User implements UserInterface
    */
   private $comments;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Likes", inversedBy="likes")
-     * @ApiSubresource()
-     */
-    private $likes;
+  /**
+   * @ORM\ManyToOne(targetEntity="App\Entity\Likes", inversedBy="author")
+   */
+  private $likes;
+
+  public function getLikes(): Collection
+  {
+    return $this->likes;
+  }
 
   public function __construct()
   {
     $this->posts = new ArrayCollection();
     $this->comments = new ArrayCollection();
+    $this->likes = new ArrayCollection();
   }
 
   public function getId(): ?int

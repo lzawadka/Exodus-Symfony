@@ -82,15 +82,14 @@ class BlogPost implements AuthoredEntityInterface, PublishedDateEntityInterface
     private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Likes", mappedBy="likes")
-     * @ApiSubresource()
+     * @ORM\ManyToOne(targetEntity="App\Entity\Likes", inversedBy="likes")
      */
     private $likes;
-
 
     public function __construct()
     {
       $this->comments = new ArrayCollection();
+      $this->likes = new ArrayCollection();
     }
 
     public function getComments(): Collection
@@ -171,5 +170,10 @@ class BlogPost implements AuthoredEntityInterface, PublishedDateEntityInterface
       $this->author = $author;
 
       return $this;
+    }
+
+    public function getLikes(): Collection
+    {
+      return $this->likes;
     }
 }

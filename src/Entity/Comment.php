@@ -108,10 +108,7 @@ class Comment implements AuthoredEntityInterface, PublishedDateEntityInterface
     {
       return $this->author;
     }
-
-    /**
-     * @param UserInterface $author
-     */
+    
     public function setAuthor(UserInterface $author): AuthoredEntityInterface
     {
       $this->author = $author;

@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\BlogPost;
 use App\Entity\Comment;
 use App\Entity\User;
+use App\Security\TokenGenerator;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
@@ -29,6 +30,7 @@ class AppFixtures extends Fixture
       'name' => 'Calou',
       'password' => 'Mars_Exodus9809',
       'roles' => [User::ROLE_WRITER],
+      'enabled' => true
     ],
     [
       'username' => '2368976',
@@ -36,6 +38,7 @@ class AppFixtures extends Fixture
       'name' => 'Linglet',
       'password' => 'Mars_Exodus9871',
       'roles' => [User::ROLE_WRITER],
+      'enabled' => true
     ],
     [
       'username' => '0988976',
@@ -43,6 +46,15 @@ class AppFixtures extends Fixture
       'name' => 'Romain',
       'password' => 'Mars_Exodus1456',
       'roles' => [User::ROLE_ADMIN],
+      'enabled' => true
+    ],
+    [
+      'username' => '0963598',
+      'email' => 'maksym.yankivskyy@hetic.net',
+      'name' => 'Yankivskyy',
+      'password' => 'Mars_Exodus6592',
+      'roles' => [User::ROLE_ADMIN],
+      'enabled' => true
     ],
     [
       'username' => '0980723',
@@ -50,6 +62,7 @@ class AppFixtures extends Fixture
       'name' => 'Avedikian',
       'password' => 'Mars_Exodus0890',
       'roles' => [User::ROLE_WRITER],
+      'enabled' => false
     ],
     [
       'username' => '5275479',
@@ -57,13 +70,19 @@ class AppFixtures extends Fixture
       'name' => 'Zawadka',
       'password' => 'Louis123',
       'roles' => [User::ROLE_SUPERADMIN],
+      'enabled' => true
     ],
   ];
+  /**
+   * @var TokenGenerator
+   */
+  private $tokenGenerator;
 
-  public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+  public function __construct(UserPasswordEncoderInterface $passwordEncoder, TokenGenerator $tokenGenerator)
   {
     $this->passwordEncoder = $passwordEncoder;
     $this->faker = Factory::create();
+    $this->tokenGenerator = $tokenGenerator;
   }
 
   public function load(ObjectManager $manager)
@@ -127,6 +146,13 @@ class AppFixtures extends Fixture
           $userFixture['password']
       ));
       $user->setRoles($userFixture['roles']);
+      $user->setEnabled($userFixture['enabled']);
+
+      if(!$userFixture['enabled']) {
+        $user->setConfirmationToken(
+          $this->tokenGenerator->getRandomSecureToken()
+        );
+      }
 
       $this->addReference('user_'.$userFixture['username'], $user);
 

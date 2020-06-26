@@ -16,7 +16,7 @@ use App\Controller\ResetPasswordAction;
 
 /**
  * @ApiResource(
-        itemOperations={
+ *     itemOperations={
  *         "get"={
  *             "access_control"="is_granted('IS_AUTHENTICATED_FULLY')",
  *             "normalization_context"={
@@ -43,7 +43,7 @@ use App\Controller\ResetPasswordAction;
  *             "validation_groups"={"put-reset-password"}
  *         }
  *     },
- *      collectionOperations={
+ *     collectionOperations={
  *         "post"={
  *             "denormalization_context"={
  *                 "groups"={"post"}
@@ -54,10 +54,10 @@ use App\Controller\ResetPasswordAction;
  *             "validation_groups"={"post"}
  *         }
  *     },
- *   )
+ * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity("username")
- * @UniqueEntity("email")
+ * @UniqueEntity("username", groups={"post"})
+ * @UniqueEntity("email", groups={"post"})
  */
 class User implements UserInterface
 {
@@ -96,21 +96,23 @@ class User implements UserInterface
 
   /**
    * @Groups({"put-reset-password"})
-   * @Assert\NotBlank()
+   * @Assert\NotBlank(groups={"put-reset-password"})
    * @Assert\Regex(
    *   pattern="/(?=.*[A-Z])(?=.*[a-z](?=.*[0-9])).{7,}/",
    *   message="Wrong password",
+   *   groups={"put-reset-password"}
    * )
    */
   private $newPassword;
 
   /**
    * @Groups({"put-reset-password"})
-   * @Assert\NotBlank()
+   * @Assert\NotBlank(groups={"put-reset-password"})
    * @UserPassword()
    * @Assert\Regex(
    *   pattern="/(?=.*[A-Z])(?=.*[a-z](?=.*[0-9])).{7,}/",
-   *   message="Wrong password"
+   *   message="Wrong password",
+   *   groups={"put-reset-password"}
    * )
    */
   private $oldPassword;
@@ -125,7 +127,7 @@ class User implements UserInterface
 
   /**
    * @ORM\Column(type="string", length=255)
-   * @Groups({"put", "put", "get-admin", "get-owner"})
+   * @Groups({"post", "put", "get-admin", "get-owner"})
    * @Assert\NotBlank(groups={"post"})
    * @Assert\Email(groups={"post", "put"})
    * @Assert\Length(min=6, max=255, groups={"post", "put"})
@@ -155,11 +157,23 @@ class User implements UserInterface
    */
   private $passwordChangeDate;
 
+  /**
+   * @ORM\Column(type="boolean")
+   */
+  private $enabled;
+
+  /**
+   * @ORM\Column(type="string", length=40, nullable=true)
+   */
+  private $confirmationToken;
+
   public function __construct()
   {
     $this->posts = new ArrayCollection();
     $this->comments = new ArrayCollection();
     $this->roles = self::DEFAULT_ROLES;
+    $this->enabled = false;
+    $this->confirmationToken = null;
   }
 
   public function getId(): ?int
@@ -205,14 +219,14 @@ class User implements UserInterface
 
   public function getEmail(): ?string
   {
-      return $this->email;
+    return $this->email;
   }
 
   public function setEmail(string $email): self
   {
-      $this->email = $email;
+    $this->email = $email;
 
-      return $this;
+    return $this;
   }
 
   /**
@@ -308,6 +322,24 @@ class User implements UserInterface
   {
     $this->passwordChangeDate = $passwordChangeDate;
   }
+  public function getEnabled()
+  {
+    return $this->enabled;
+  }
 
+  public function setEnabled($enabled): void
+  {
+    $this->enabled = $enabled;
+  }
+
+  public function getConfirmationToken()
+  {
+    return $this->confirmationToken;
+  }
+
+  public function setConfirmationToken($confirmationToken): void
+  {
+    $this->confirmationToken = $confirmationToken;
+  }
 
 }

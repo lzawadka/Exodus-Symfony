@@ -1,2 +1,2 @@
 #!/bin/sh
-    rsync -av ./ symfony-xmt3.fb9tjio0nvb4ivuk@deploy.eu2.frbit.com:~/exodus --include=public/build --include=.htaccess --include=public/vendor --exclude-from=.gitignore --exclude=".*"
+    rsync -av ./ symfony-xmt3.fb9tjio0nvb4ivuk@deploy.eu2.frbit.com:~/exodus --include=public/build --include=public/.htaccess --include=public/vendor --exclude-from=.gitignore --exclude=".*"

@@ -167,6 +167,60 @@ class User implements UserInterface
    */
   private $confirmationToken;
 
+  /**
+   * @ORM\Column(type="string", length=255)
+   * @Groups({"get"})
+   */
+  private $age;
+
+  /**
+   * @ORM\Column(type="string", length=255)
+   * @Groups({"get"})
+   */
+  private $BirthDate;
+
+  /**
+   * @ORM\Column(type="string", length=255)
+   * @Groups({"get"})
+   */
+  private $BirthPlace;
+
+  /**
+   * @ORM\Column(type="string", length=255)
+   * @Groups({"get"})
+   */
+  private $Work;
+
+  /**
+   * @ORM\Column(type="string", length=255)
+   * @Groups({"get"})
+   */
+  private $Weight;
+
+  /**
+   * @ORM\Column(type="string", length=255)
+   * @Groups({"get"})
+   */
+  private $Height;
+
+  /**
+   * @ORM\Column(type="string", length=255)
+   * @Groups({"get"})
+   */
+  private $EyeColor;
+
+  /**
+   * @ORM\Column(type="string", length=255)
+   * @Groups({"get"})
+   */
+  private $HairColor;
+
+  /**
+   * @ORM\Column(type="string", length=255)
+   * @Groups({"get"})
+   */
+  private $Signature;
+
   public function __construct()
   {
     $this->posts = new ArrayCollection();
@@ -342,4 +396,116 @@ class User implements UserInterface
     $this->confirmationToken = $confirmationToken;
   }
 
+  public function __toString(): string
+  {
+    return $this->name;
+  }
+
+  public function getAge(): ?string
+  {
+      return $this->age;
+  }
+
+  public function setAge(string $age): self
+  {
+      $this->age = $age;
+
+      return $this;
+  }
+
+  public function getBirthDate(): ?string
+  {
+      return $this->BirthDate;
+  }
+
+  public function setBirthDate(string $BirthDate): self
+  {
+      $this->BirthDate = $BirthDate;
+
+      return $this;
+  }
+
+  public function getBirthPlace(): ?string
+  {
+      return $this->BirthPlace;
+  }
+
+  public function setBirthPlace(string $BirthPlace): self
+  {
+      $this->BirthPlace = $BirthPlace;
+
+      return $this;
+  }
+
+  public function getWork(): ?string
+  {
+      return $this->Work;
+  }
+
+  public function setWork(string $Work): self
+  {
+      $this->Work = $Work;
+
+      return $this;
+  }
+
+  public function getWeight(): ?string
+  {
+      return $this->Weight;
+  }
+
+  public function setWeight(string $Weight): self
+  {
+      $this->Weight = $Weight;
+
+      return $this;
+  }
+
+  public function getHeight(): ?string
+  {
+      return $this->Height;
+  }
+
+  public function setHeight(string $Height): self
+  {
+      $this->Height = $Height;
+
+      return $this;
+  }
+
+  public function getEyeColor(): ?string
+  {
+      return $this->EyeColor;
+  }
+
+  public function setEyeColor(string $EyeColor): self
+  {
+      $this->EyeColor = $EyeColor;
+
+      return $this;
+  }
+
+  public function getHairColor(): ?string
+  {
+      return $this->HairColor;
+  }
+
+  public function setHairColor(string $HairColor): self
+  {
+      $this->HairColor = $HairColor;
+
+      return $this;
+  }
+
+  public function getSignature(): ?string
+  {
+      return $this->Signature;
+  }
+
+  public function setSignature(string $Signature): self
+  {
+      $this->Signature = $Signature;
+
+      return $this;
+  }
 }

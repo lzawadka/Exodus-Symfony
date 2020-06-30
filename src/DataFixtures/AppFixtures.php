@@ -30,7 +30,16 @@ class AppFixtures extends Fixture
       'name' => 'Calou',
       'password' => 'Mars_Exodus9809',
       'roles' => [User::ROLE_WRITER],
-      'enabled' => true
+      'enabled' => true,
+      'age' => '28',
+      'BirthDate' => '07/08/1992',
+      'BirthPlace' => 'Ukraine',
+      'Work' => 'Front-End Developer',
+      'Weight' => '70',
+      'Height' => '190',
+      'EyeColor' => 'Brown',
+      'HairColor' => 'Brown',
+      'Signature' => 'Calou'
     ],
     [
       'username' => '2368976',
@@ -38,7 +47,16 @@ class AppFixtures extends Fixture
       'name' => 'Linglet',
       'password' => 'Mars_Exodus9871',
       'roles' => [User::ROLE_WRITER],
-      'enabled' => true
+      'enabled' => true,
+      'age' => '32',
+      'BirthDate' => '10/05/1988',
+      'BirthPlace' => 'France',
+      'Work' => 'Chef de Projet',
+      'Weight' => '60',
+      'Height' => '175',
+      'EyeColor' => 'Blue',
+      'HairColor' => 'Blond',
+      'Signature' => 'Longlet'
     ],
     [
       'username' => '0988976',
@@ -46,7 +64,16 @@ class AppFixtures extends Fixture
       'name' => 'Romain',
       'password' => 'Mars_Exodus1456',
       'roles' => [User::ROLE_ADMIN],
-      'enabled' => true
+      'enabled' => true,
+      'age' => '38',
+      'BirthDate' => '07/08/1998',
+      'BirthPlace' => 'France',
+      'Work' => 'Front-End Developer',
+      'Weight' => '68',
+      'Height' => '178',
+      'EyeColor' => 'Blue',
+      'HairColor' => 'Blond',
+      'Signature' => 'Romain'
     ],
     [
       'username' => '0963598',
@@ -54,7 +81,16 @@ class AppFixtures extends Fixture
       'name' => 'Yankivskyy',
       'password' => 'Mars_Exodus6592',
       'roles' => [User::ROLE_ADMIN],
-      'enabled' => true
+      'enabled' => true,
+      'age' => '38',
+      'BirthDate' => '07/08/1998',
+      'BirthPlace' => 'Ukraine',
+      'Work' => 'Developer',
+      'Weight' => '68',
+      'Height' => '175',
+      'EyeColor' => 'Brown',
+      'HairColor' => 'Brown',
+      'Signature' => 'Yankivskyy'
     ],
     [
       'username' => '0980723',
@@ -62,7 +98,16 @@ class AppFixtures extends Fixture
       'name' => 'Avedikian',
       'password' => 'Mars_Exodus0890',
       'roles' => [User::ROLE_WRITER],
-      'enabled' => false
+      'enabled' => true,
+      'age' => '25',
+      'BirthDate' => '07/08/1995',
+      'BirthPlace' => 'France',
+      'Work' => 'Designer',
+      'Weight' => '68',
+      'Height' => '165',
+      'EyeColor' => 'Brown',
+      'HairColor' => 'Brown',
+      'Signature' => 'Avedikian'
     ],
     [
       'username' => '5275479',
@@ -70,9 +115,19 @@ class AppFixtures extends Fixture
       'name' => 'Zawadka',
       'password' => 'Louis123',
       'roles' => [User::ROLE_SUPERADMIN],
-      'enabled' => true
+      'enabled' => true,
+      'age' => '38',
+      'BirthDate' => '07/08/1998',
+      'BirthPlace' => 'Ukraine',
+      'Work' => 'Developer',
+      'Weight' => '68',
+      'Height' => '175',
+      'EyeColor' => 'Brown',
+      'HairColor' => 'Brown',
+      'Signature' => 'Yankivskyy'
     ],
   ];
+
   /**
    * @var TokenGenerator
    */
@@ -147,6 +202,15 @@ class AppFixtures extends Fixture
       ));
       $user->setRoles($userFixture['roles']);
       $user->setEnabled($userFixture['enabled']);
+      $user->setBirthDate($userFixture['BirthDate']);
+      $user->setAge($userFixture['age']);
+      $user->setBirthPlace($userFixture['BirthPlace']);
+      $user->setSignature($userFixture['Signature']);
+      $user->setHairColor($userFixture['HairColor']);
+      $user->setHeight($userFixture['Height']);
+      $user->setWeight($userFixture['Weight']);
+      $user->setWork($userFixture['Work']);
+      $user->setEyeColor($userFixture['EyeColor']);
 
       if(!$userFixture['enabled']) {
         $user->setConfirmationToken(
@@ -196,3 +260,5 @@ class AppFixtures extends Fixture
     );
   }
 }
+
+

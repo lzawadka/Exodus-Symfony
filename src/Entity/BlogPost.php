@@ -15,6 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=BlogPostRepository::class)
  * @ApiResource(
+ *      attributes={"order"={"published": "DESC"}},
  *      itemOperations={
  *        "get"={
  *            "normalization_context"={
@@ -63,8 +64,8 @@ class BlogPost implements AuthoredEntityInterface, PublishedDateEntityInterface
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
-     * @Assert\Length(min=20)
      * @Groups({"post", "get-blog-post-with-author"})
+     * @Assert\Length(min=1, max=500)
      */
     private $content;
 

@@ -7,7 +7,14 @@ use App\Repository\LieuRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *   itemOperations={
+ *         "get",
+ *         "delete"={
+ *             "access_control"="is_granted('ROLE_ADMIN')"
+ *         }
+ *    }
+ * )
  * @ORM\Entity(repositoryClass=LieuRepository::class)
  */
 class Lieu
@@ -35,14 +42,14 @@ class Lieu
     private $CoverImage;
 
     /**
+     * @ORM\Column(type="array", length=1000)
+     */
+    private $Text = [];
+
+    /**
      * @ORM\Column(type="array")
      */
     private $DoubleMedia = [];
-
-    /**
-     * @ORM\Column(type="string", length=500)
-     */
-    private $Texte;
 
     public function getId(): ?int
     {
@@ -97,15 +104,20 @@ class Lieu
         return $this;
     }
 
-    public function getTexte(): ?string
+    public function getText(): array
     {
-        return $this->Texte;
+        return $this->Text;
     }
 
-    public function setTexte(string $Texte): self
+    public function setText(array $Text): self
     {
-        $this->Texte = $Texte;
+        $this->Text = $Text;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+      return $this->PlaceName;
     }
 }

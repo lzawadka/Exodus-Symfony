@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -68,6 +69,7 @@ class User implements UserInterface
   const DEFAULT_ROLES = [self::ROLE_WRITER];
   /**
    * @ORM\Id()
+   * @ApiProperty(identifier=false)
    * @ORM\GeneratedValue()
    * @ORM\Column(type="integer")
    * @Groups({"get"})
@@ -75,7 +77,8 @@ class User implements UserInterface
   private $id;
 
   /**
-   * @ORM\Column(type="string", length=255)
+   * @ApiProperty(identifier=true)
+   * @ORM\Column(type="string", length=255, unique=true)
    * @Groups({"get", "post", "get-comment-with-author", "get-blog-post-with-author"})
    * @Assert\NotBlank()
    * @Assert\Length(min=6, max=255, groups={"post"})
@@ -108,12 +111,7 @@ class User implements UserInterface
   /**
    * @Groups({"put-reset-password"})
    * @Assert\NotBlank(groups={"put-reset-password"})
-   * @UserPassword()
-   * @Assert\Regex(
-   *   pattern="/(?=.*[A-Z])(?=.*[a-z](?=.*[0-9])).{7,}/",
-   *   message="Wrong password",
-   *   groups={"put-reset-password"}
-   * )
+   * @UserPassword(groups={"put-reset-password"})
    */
   private $oldPassword;
 
@@ -127,6 +125,12 @@ class User implements UserInterface
 
   /**
    * @ORM\Column(type="string", length=255)
+   * @Groups({"get", "post"})
+   */
+  private $firstName;
+
+  /**
+   * @ORM\Column(type="string", length=255)
    * @Groups({"post", "put", "get-admin", "get-owner"})
    * @Assert\NotBlank(groups={"post"})
    * @Assert\Email(groups={"post", "put"})
@@ -136,13 +140,13 @@ class User implements UserInterface
 
   /**
    * @ORM\OneToMany(targetEntity="App\Entity\BlogPost", mappedBy="author")
-   * @Groups({"get"})
+   * @Groups({"get", "get-blog-post-with-author"})
    */
   private $posts;
 
   /**
    * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="author")
-   * @Groups({"get"})
+   * @Groups({"get", "get-comment-with-author"})
    */
   private $comments;
 
@@ -169,57 +173,68 @@ class User implements UserInterface
 
   /**
    * @ORM\Column(type="string", length=255)
-   * @Groups({"get"})
+   * @Groups({"get", "post"})
    */
   private $age;
 
   /**
    * @ORM\Column(type="string", length=255)
-   * @Groups({"get"})
+   * @Groups({"get", "post"})
    */
-  private $BirthDate;
+  private $birthDate;
 
   /**
    * @ORM\Column(type="string", length=255)
-   * @Groups({"get"})
+   * @Groups({"get", "post"})
    */
-  private $BirthPlace;
+  private $birthPlace;
 
   /**
    * @ORM\Column(type="string", length=255)
-   * @Groups({"get"})
+   * @Groups({"get", "post"})
    */
-  private $Work;
+  private $work;
 
   /**
    * @ORM\Column(type="string", length=255)
-   * @Groups({"get"})
+   * @Groups({"get", "post"})
    */
-  private $Weight;
+  private $weight;
 
   /**
    * @ORM\Column(type="string", length=255)
-   * @Groups({"get"})
+   * @Groups({"get", "post"})
    */
-  private $Height;
+  private $height;
 
   /**
    * @ORM\Column(type="string", length=255)
-   * @Groups({"get"})
+   * @Groups({"get", "post"})
    */
-  private $EyeColor;
+  private $eyeColor;
 
   /**
    * @ORM\Column(type="string", length=255)
-   * @Groups({"get"})
+   * @Groups({"get", "post"})
    */
-  private $HairColor;
+  private $hairColor;
+
+  /**
+   * @ORM\Column(type="string", length=255, nullable=true)
+   * @Groups({"get", "post"})
+   */
+  private $profilePicture;
+
+  /**
+   * @ORM\Column(type="string", length=255, nullable=true)
+   * @Groups({"get", "post"})
+   */
+  private $ticketUrl;
 
   /**
    * @ORM\Column(type="string", length=255)
-   * @Groups({"get"})
    */
-  private $Signature;
+  private $gender;
 
   public function __construct()
   {
@@ -269,6 +284,18 @@ class User implements UserInterface
       $this->name = $name;
 
       return $this;
+  }
+
+  public function getFirstName(): ?string
+  {
+    return $this->firstName;
+  }
+
+  public function setFirstName(string $firstName): self
+  {
+    $this->firstName = $firstName;
+
+    return $this;
   }
 
   public function getEmail(): ?string
@@ -396,115 +423,137 @@ class User implements UserInterface
     $this->confirmationToken = $confirmationToken;
   }
 
-  public function __toString(): string
+  public function getAge()
   {
-    return $this->name;
+    return $this->age;
   }
 
-  public function getAge(): ?string
+  public function setAge($age): void
   {
-      return $this->age;
-  }
-
-  public function setAge(string $age): self
-  {
-      $this->age = $age;
-
-      return $this;
+    $this->age = $age;
   }
 
   public function getBirthDate(): ?string
   {
-      return $this->BirthDate;
+      return $this->birthDate;
   }
 
-  public function setBirthDate(string $BirthDate): self
+  public function setBirthDate(string $birthDate): self
   {
-      $this->BirthDate = $BirthDate;
+      $this->birthDate = $birthDate;
 
       return $this;
   }
 
   public function getBirthPlace(): ?string
   {
-      return $this->BirthPlace;
+      return $this->birthPlace;
   }
 
-  public function setBirthPlace(string $BirthPlace): self
+  public function setBirthPlace(string $birthPlace): self
   {
-      $this->BirthPlace = $BirthPlace;
+      $this->birthPlace = $birthPlace;
 
       return $this;
   }
 
   public function getWork(): ?string
   {
-      return $this->Work;
+      return $this->work;
   }
 
-  public function setWork(string $Work): self
+  public function setWork(string $work): self
   {
-      $this->Work = $Work;
+      $this->work = $work;
 
       return $this;
   }
 
   public function getWeight(): ?string
   {
-      return $this->Weight;
+      return $this->weight;
   }
 
-  public function setWeight(string $Weight): self
+  public function setWeight(string $weight): self
   {
-      $this->Weight = $Weight;
+      $this->weight = $weight;
 
       return $this;
   }
 
   public function getHeight(): ?string
   {
-      return $this->Height;
+      return $this->height;
   }
 
-  public function setHeight(string $Height): self
+  public function setHeight(string $height): self
   {
-      $this->Height = $Height;
+      $this->height = $height;
 
       return $this;
   }
 
   public function getEyeColor(): ?string
   {
-      return $this->EyeColor;
+      return $this->eyeColor;
   }
 
-  public function setEyeColor(string $EyeColor): self
+  public function setEyeColor(string $eyeColor): self
   {
-      $this->EyeColor = $EyeColor;
+      $this->eyeColor = $eyeColor;
 
       return $this;
   }
 
   public function getHairColor(): ?string
   {
-      return $this->HairColor;
+      return $this->hairColor;
   }
 
-  public function setHairColor(string $HairColor): self
+  public function setHairColor(string $hairColor): self
   {
-      $this->HairColor = $HairColor;
+      $this->hairColor = $hairColor;
 
       return $this;
   }
 
-  public function getSignature(): ?string
+  public function getProfilePicture(): ?string
   {
-      return $this->Signature;
+      return $this->profilePicture;
   }
 
-  public function setSignature(string $Signature): self
+  public function setProfilePicture(?string $profilePicture): self
   {
-      $this->Signature = $Signature;
+      $this->profilePicture = $profilePicture;
+
+      return $this;
+  }
+
+  public function getTicketUrl(): ?string
+  {
+      return $this->ticketUrl;
+  }
+
+  public function setTicketUrl(?string $ticketUrl): self
+  {
+      $this->ticketUrl = $ticketUrl;
+
+      return $this;
+  }
+
+  public function __toString(): string
+  {
+    return $this->name;
+  }
+
+  public function getGender(): ?string
+  {
+      return $this->gender;
+  }
+
+  public function setGender(string $gender): self
+  {
+      $this->gender = $gender;
 
       return $this;
   }

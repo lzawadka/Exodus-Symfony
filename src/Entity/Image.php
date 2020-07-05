@@ -41,18 +41,20 @@ class Image
    * @ORM\Id()
    * @ORM\GeneratedValue()
    * @ORM\Column(type="integer")
+   * @Groups({"get"})
    */
   private $id;
 
   /**
    * @Vich\UploadableField(mapping="images", fileNameProperty="url")
    * @Assert\NotNull()
+   * @Groups({"get"})
    */
   private $file;
 
   /**
    * @ORM\Column(nullable=true)
-   * @Groups({"get-blog-post-with-author"})
+   * @Groups({"get-blog-post-with-author", "get"})
    */
   private $url;
 

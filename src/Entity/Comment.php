@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
+ *      attributes={"order"={"published": "DESC"}},
  *      itemOperations={
  *        "get",
  *        "put"={
@@ -104,7 +105,7 @@ class Comment implements AuthoredEntityInterface, PublishedDateEntityInterface
     /**
      * @return User
      */
-    public function getAuthor(): User
+    public function getAuthor(): ?User
     {
       return $this->author;
     }
@@ -118,7 +119,7 @@ class Comment implements AuthoredEntityInterface, PublishedDateEntityInterface
 
       return $this;
     }
-    public function getBlogPost(): BlogPost
+    public function getBlogPost(): ?BlogPost
     {
       return $this->blogPost;
     }

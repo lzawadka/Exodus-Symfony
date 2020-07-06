@@ -22,7 +22,7 @@ class TimeEventFixture extends Fixture
       'picture' => '/images/Timeline/TimelineEvent-9.png',
       'buttonLabel' => 'Accéder au calendrier',
       'buttonUrl' => 'Button Url',
-      'Date' => '11/05/2060'
+      'Date' => '05/31/2061'
     ],
     [
       'title' => 'Jours banalisés pour les nouveaux arrivants',
@@ -30,7 +30,7 @@ class TimeEventFixture extends Fixture
       'picture' => '/images/Timeline/TimelineEvent-8.png',
       'buttonLabel' => 'Accéder au calendrier',
       'buttonUrl' => 'Button Url',
-      'Date' => '11/05/2060'
+      'Date' => '09/04/2061'
     ],
     [
       'title' => 'Atterrissage des navettes',
@@ -38,7 +38,7 @@ class TimeEventFixture extends Fixture
       'picture' => '/images/Timeline/TimelineEvent-7.png',
       'buttonLabel' => 'Accéder au calendrier',
       'buttonUrl' => 'Button Url',
-      'Date' => '11/05/2060'
+      'Date' => '04/05/2061'
     ],
     [
       'title' => 'Nouvel An 2061 dans l’espace',
@@ -46,7 +46,7 @@ class TimeEventFixture extends Fixture
       'picture' => '/images/Timeline/TimelineEvent-6.png',
       'buttonLabel' => 'Accéder au calendrier',
       'buttonUrl' => 'Button Url',
-      'Date' => '11/05/2060'
+      'Date' => '01/01/2061'
     ],
     [
       'title' => 'Première soirée de l’Exodus',
@@ -54,7 +54,7 @@ class TimeEventFixture extends Fixture
       'picture' => '/images/Timeline/TimelineEvent-5.png',
       'buttonLabel' => 'Accéder au calendrier',
       'buttonUrl' => 'Button Url',
-      'Date' => '11/05/2060'
+      'Date' => '07/17/2060'
     ],
     [
       'title' => 'Décollage et départ',
@@ -62,7 +62,7 @@ class TimeEventFixture extends Fixture
       'picture' => '/images/Timeline/TimelineEvent-4.png',
       'buttonLabel' => 'Accéder au calendrier',
       'buttonUrl' => 'Button Url',
-      'Date' => '11/05/2060'
+      'Date' => '07/10/2060'
     ],
     [
       'title' => 'Conférence de Presse à NYC',
@@ -70,7 +70,7 @@ class TimeEventFixture extends Fixture
       'picture' => '/images/Timeline/TimelineEvent-3.png',
       'buttonLabel' => 'Accéder au calendrier',
       'buttonUrl' => 'Button Url',
-      'Date' => '11/05/2060'
+      'Date' => '06/17/2060'
     ],
     [
       'title' => 'Entraînements en apesanteur',
@@ -78,7 +78,8 @@ class TimeEventFixture extends Fixture
       'picture' => '/images/Timeline/TimelineEvent-2.png',
       'buttonLabel' => 'Accéder au calendrier',
       'buttonUrl' => 'Button Url',
-      'Date' => '11/05/2060'
+      'Date' => '06/02/2060'
+
     ],
     [
       'title' => 'Début des entraînements physiques',
@@ -86,7 +87,7 @@ class TimeEventFixture extends Fixture
       'picture' => '/images/Timeline/TimelineEvent-1.png',
       'buttonLabel' => 'Accéder au calendrier',
       'buttonUrl' => 'Button Url',
-      'Date' => '11/05/2060'
+      'Date' => '05/10/2060'
     ],
   ];
 
@@ -100,7 +101,7 @@ class TimeEventFixture extends Fixture
       $timeEvent->setPicture($timeEventFixture['picture']);
       $timeEvent->setButtonLabel($timeEventFixture['buttonLabel']);
       $timeEvent->setButtonUrl($timeEventFixture['buttonUrl']);
-      $timeEvent->setDate($timeEventFixture['Date']);
+      $timeEvent->setDate(new \DateTime($timeEventFixture['Date']));
 
       $manager->persist($timeEvent);
     }

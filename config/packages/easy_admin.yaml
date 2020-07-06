@@ -92,18 +92,22 @@ easy_admin:
          class: App\Entity\Section
        TimeEvent:
          class: App\Entity\TimeEvent
+         list:
+           actions: [ { name: 'Show' } ]
          edit:
-           - title
-           - text
-           - picture
-           - buttonLabel
-           - buttonUrl
+            fields:
+               - title
+               - text
+               - picture
+               - buttonLabel
+               - buttonUrl
          new:
-           - title
-           - text
-           - picture
-           - buttonLabel
-           - buttonUrl
+           fields:
+               - title
+               - text
+               - picture
+               - buttonLabel
+               - buttonUrl
        Calendar:
          class: App\Entity\Calendar
 

@@ -59,7 +59,7 @@ class TimeEvent
     private $buttonUrl;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="date", length=255)
      * @Groups({"post", "get"})
      */
     private $Date;
@@ -129,12 +129,12 @@ class TimeEvent
         return $this;
     }
 
-    public function getDate(): ?string
+    public function getDate(): ?\DateTimeInterface
     {
         return $this->Date;
     }
 
-    public function setDate(string $Date): self
+    public function setDate(\DateTimeInterface $Date): self
     {
         $this->Date = $Date;
 

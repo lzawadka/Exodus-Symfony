@@ -34,7 +34,7 @@ class ResetPasswordAction
     ValidatorInterface $validator,
     UserPasswordEncoderInterface $userPasswordEncoder,
     EntityManagerInterface $entityManager,
-  JWTTokenManagerInterface $tokenManager
+    JWTTokenManagerInterface $tokenManager
 )
   {
     $this->validator = $validator;

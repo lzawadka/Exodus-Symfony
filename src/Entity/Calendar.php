@@ -45,7 +45,7 @@ class Calendar
     private $type;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="date", length=255)
      * @Groups({"post", "get"})
      */
     private $date;
@@ -91,12 +91,12 @@ class Calendar
         return $this;
     }
 
-    public function getDate(): ?string
+    public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
     }
 
-    public function setDate(string $date): self
+    public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
 

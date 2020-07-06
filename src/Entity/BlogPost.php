@@ -23,7 +23,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *            }
  *        },
  *        "put"={
-            "access_control"="is_granted('ROLE_WRITER') and object.getAuthor() == user"
+            "access_control"="is_granted('ROLE_WRITER')"
  *        }
  *      },
  *      collectionOperations={
@@ -33,7 +33,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *        }
  *      },
  *      denormalizationContext={
- *        "groups"={"post"}
+ *        "groups"={"post", "put"}
  *      }
  *   )
  */
@@ -97,7 +97,6 @@ class BlogPost implements AuthoredEntityInterface, PublishedDateEntityInterface
      * @Groups({"post", "get-blog-post-with-author"})
      */
     private $images;
-
 
     public function __construct()
     {

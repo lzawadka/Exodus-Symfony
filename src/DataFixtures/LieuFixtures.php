@@ -30,7 +30,7 @@ class LieuFixtures extends Fixture
     ],
     [
       "Category" => "Le Cratère",
-      "CoverImage" => "/images/Lieu/Endurance/Cover-Endurance.jpeg",
+      "CoverImage" => "/images/Lieu/Endurance/Cover-Endurance.jpg",
       "DoubleMedia" => [
         "/images/Lieu/Endurance/Endurance-1.jpg",
         "/images/Lieu/Endurance/Endurance-2.jpg"
@@ -56,7 +56,7 @@ class LieuFixtures extends Fixture
     ],
     [
       "Category" => "Le Canyon",
-      "CoverImage" => "/images/Lieu/CopratesChasma/Cover-CopratesChasma.jpeg",
+      "CoverImage" => "/images/Lieu/CopratesChasma/Cover-CopratesChasma.jpg",
       "DoubleMedia" => [
         "/images/Lieu/CopratesChasma/CopratesChasma-1.jpg",
         "/images/Lieu/CopratesChasma/CopratesChasma-2.jpg"
@@ -84,7 +84,7 @@ class LieuFixtures extends Fixture
     ],
     [
       "Category" => "Le Canyon",
-      "CoverImage" => "/images/Lieu/VallesMarineris/Cover-VallesMarineris.jpg",
+      "CoverImage" => "/images/Lieu/VallesMarineris/Cover-VallesMarineris.jpeg",
       "DoubleMedia" => [
         "/images/Lieu/VallesMarineris/VallesMarineris-1.jpg",
         "/images/Lieu/VallesMarineris/VallesMarineris-2.jpg"

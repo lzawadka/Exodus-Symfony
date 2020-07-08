@@ -65,5 +65,5 @@ Le sujet abordé, et la façon dont on l'a approché a grandement influé sur me
 Par exemple dans mon application, j'ai beaucoup de contenu (texte, images et vidéo), et il y a aussi un réseau social. 
 Donc l'utilisation d'un token d'authentification est nécessaire, et la mise en place d'un Uploader d'image aussi.
 Ensuite, nous avons beaucoup de contenu sur l'application, du coup la mise en place d'un back-office était un gros plus pour rajouter du contenu.
-Et dans la continuité de notre projet, on peut ajouter un utilisateur uniquement via le back-office (car il est impossible de créer un compte pour un utilisateur si il n'a pas de billet, c'est une application de accès privilégié).
+Et dans la continuité de notre projet, on peut ajouter un utilisateur uniquement via le back-office (car il est impossible de créer un compte pour un utilisateur si il n'a pas de billet, c'est une application avec un accès privilégié).
 

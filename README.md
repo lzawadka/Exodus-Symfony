@@ -45,11 +45,11 @@ Et enfin, les bundles que j'ai utiliser :
 
 ## Justification des choix techniques
 
-Tout d'abord, j'ai pensé ma partie Back en la découpant le plus possible afin d'avoir des méthodes réutilisable.
-Ensuite, j'ai pensé en terme de feature (UploadImage, Authentification, Changement de mot de passe, ApiExterne...)
+Tout d'abord, j'ai pensé ma partie Back en la découpant le plus possible afin d'avoir des méthodes réutilisables.
+Ensuite, j'ai pensé en terme de features (UploadImage, Authentification, Changement de mot de passe, ApiExterne...)
 
-Ensuite, je suis passé via ApiPlatforme pour gérer mes endpoint plus facilement.
-Via les endpoint disponible, j'autorise uniquement des utilisateur connecter pour certaines actions et des utilisateurs `ADMIN` pour la gestion du back-office.
+Ensuite, je suis passé via ApiPlatforme pour gérer mes endpoints plus facilement.
+Via les endpoints disponibles, j'autorise uniquement des utilisateurs connectés pour certaines actions et des utilisateurs `ADMIN` pour la gestion du back-office.
 
 J'ai eu l'occasion d'utiliser plusieurs bundles comme :
 
@@ -60,10 +60,10 @@ J'ai eu l'occasion d'utiliser plusieurs bundles comme :
 
 J'ai ensuite utilisé les fixtures afin d'injecter du contenu directement dans mon application.
 
-Le sujet abordé, et la façon dont on l'a approché à grandement influer sur mes choix techniques.
+Le sujet abordé, et la façon dont on l'a approché a grandement influé sur mes choix techniques.
 
 Par exemple dans mon application, j'ai beaucoup de contenu (texte, images et vidéo), et il y a aussi un réseau social. 
 Donc l'utilisation d'un token d'authentification est nécessaire, et la mise en place d'un Uploader d'image aussi.
 Ensuite, nous avons beaucoup de contenu sur l'application, du coup la mise en place d'un back-office était un gros plus pour rajouter du contenu.
-Et dans la continuité de notre projet, on peut ajouter un utilisateur via le back-office (car impossible de créer un compte pour l'utilisateur, c'est une application de privilégié).
+Et dans la continuité de notre projet, on peut ajouter un utilisateur uniquement via le back-office (car il est impossible de créer un compte pour un utilisateur si il n'a pas de billet, c'est une application de accès privilégié).
 
